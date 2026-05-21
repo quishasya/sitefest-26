@@ -1,11 +1,9 @@
 // Menyimpan seluruh data report
-
 function saveReports() {
   localStorage.setItem("reports", JSON.stringify(reports));
 }
 
 function addReport() {
-  // Variable untuk menyimpan data report
   const report = {
     id: Date.now().toString(),
 
@@ -26,17 +24,13 @@ function addReport() {
 
   //   Meminta izin lokasi ke device
   if (navigator.geolocation) {
-    // Apabila device support untuk fitur GPS
     navigator.geolocation.getCurrentPosition(
-      // Jika berhasil mendapatkan
       (pos) => {
         report.coordinates = {
-          // Nested object
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         };
         report.location = `${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`;
-        // Menyimpan ke array dan local storage
 
         reports.unshift(report);
         saveReports();
@@ -45,19 +39,16 @@ function addReport() {
         updateStatus();
         alert("Laporan berhasil ditambahkan!");
       },
-      // Jika gagal mendapatkan lokasi
 
       (err) => {
         console.warn("Gagal ambil lokasi", err.message);
       },
     );
   } else {
-    // Apabila device tidak support untuk fitur GPS
     alert("Browser kamu tidak mendukung geolocation");
   }
 }
 
-// Menghapus data report berdasarkan id
 function deleteReport(id) {
   const yakin = confirm("Yakin mau menghapus laporan ini?");
   if (yakin) {
@@ -68,13 +59,12 @@ function deleteReport(id) {
   }
 }
 
-let editingId = null; // Null artinya sedang tidak mengedit apa pun
+let editingId = null;
 
 function editReport(id) {
   const report = reports.find((r) => r.id === id);
   if (!report) return;
 
-  // isi form dengan data lama
   document.getElementById("judul").value = report.title;
   document.getElementById("kategori").value = report.category;
   document.getElementById("deskripsi").value = report.description;
@@ -85,7 +75,6 @@ function editReport(id) {
   document.getElementById("email").value = report.email;
   document.getElementById("telepon").value = report.phone;
 
-  // Simpan ID yang sedang diedit
   editingId = id;
 
   document.querySelector("#addForm button[type='submit']").textContent =
@@ -94,7 +83,6 @@ function editReport(id) {
   openModal();
 }
 
-// Event listener baru untuk form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -123,19 +111,16 @@ form.addEventListener("submit", (e) => {
 
     alert("Laporan berhasil diperbarui!");
 
-    // Reset ke mode tambah
     editingId = null;
     document.querySelector("#addForm button[type='submit']").textContent =
       "Tambah Laporan";
     form.reset();
   } else {
-    // Mode tambah biasa
     addReport();
     form.reset();
   }
 });
 
-// Reset form & mode saat modal ditutup
 function closeModal() {
   modal.style.display = "none";
   form.reset();

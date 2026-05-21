@@ -21,27 +21,52 @@ function renderReports(list = reports) {
   list.forEach((report) => {
     const card = document.createElement("div");
     card.innerHTML = `
-        <div class="bg-green-50 p-6 rounded-xl flex flex-col gap-2 ">
+      <div class="bg-green-50 rounded-xl p-6 h-full">
+        <div class="flex flex-col justify-between h-full gap-2">
+          
+          <!-- konten atas -->
+          <div class="flex flex-col gap-2">
             <div class="flex flex-row justify-between">
-            <h3 class="text-2xl font-bold">${report.title}</h3>
-            <div class="text-[#EE8428] text-xs border-2 h-fit border-[#D7CCBA] font-medium bg-[#FDF0DB] rounded-full w-fit px-4 py-2 hover:border-[#EE8428] hover:-translate-y-2 transition-all duration-300">
+              <h3 class="text-2xl font-bold">${report.title}</h3>
+              <div class="text-xs border-2 h-fit font-medium rounded-full w-fit px-4 py-2 hover:-translate-y-2 transition-all duration-300
+                ${
+                  report.status === "pending"
+                    ? "text-amber-500 border-amber-300 bg-amber-100"
+                    : report.status === "progress"
+                      ? "text-blue-500 border-blue-300 bg-blue-100"
+                      : report.status === "resolve"
+                        ? "text-green-600 border-green-300 bg-green-50"
+                        : ""
+                }">
                 ${STATUS_TEXT[report.status]}
-            </div>
+              </div>
             </div>
             <span class="text-[#537d63] text-sm">${CATEGORY_TEXT[report.category]}</span>
             <p class="text-[#484848] text-sm">${report.description}</p>
-            <div class="text-gray-600 border-t border-b border-l-0 border-r-0 border-2 border-gray-600 py-2 px-2 text-sm mt-2">
-            ${report.location}
+          </div>
+
+          <!-- konten bawah (selalu nempel di bawah) -->
+          <div class="flex flex-col gap-2">
+            <div class="text-gray-600 border-t border-b  border-t-gray-600 border-b-gray-600 py-2 px-2 text-sm mt-2">
+              ${report.location}
             </div>
             <div class="flex flex-row gap-2 mt-2">
-            <button onclick="openDetailModal('${report.id}')" class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">
+              <button onclick="openDetailModal('${report.id}')" class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">
                 Detail
-            </button>
-            <button onclick="deleteReport('${report.id}')" class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">
+              </button>
+              <button onclick="deleteReport('${report.id}')" class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">
                 Hapus
-            </button>
+              </button>
+              <a href="update.html?id=${report.id}" class="w-full">
+                <button class="bg-yellow-500 text-white py-2 px-6 rounded-lg w-full">
+                  Edit
+                </button>
+              </a>
             </div>
+          </div>
+
         </div>
+      </div>
     `;
     container.appendChild(card);
   });
@@ -110,6 +135,10 @@ function openDetailModal(reportId) {
 
 function closeDetailModal() {
   detailModal.style.display = "none";
+}
+
+function editReport(id) {
+  window.location.href = `update.html?id=${id}`;
 }
 
 form.addEventListener("submit", (e) => {
