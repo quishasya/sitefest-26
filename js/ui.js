@@ -141,12 +141,6 @@ function editReport(id) {
   window.location.href = `update.html?id=${id}`;
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  addReport();
-  closeModal();
-});
-
 // Init
 document.addEventListener("DOMContentLoaded", () => {
   renderReports();
