@@ -1,588 +1,745 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ecoMetric | E-Report Platform</title>
+    <link rel="stylesheet" href="src/output.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+    <!-- Boxicon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-    <link rel="stylesheet" href="src/output.css">
+  <body class="bg-white/20 font-jakarta">
+    <header class="fixed top-0 left-0 w-full" style="z-index: 9999">
+      <nav class="mx-auto px-4 md:px-30 mt-4 md:mt-6">
+        <div
+          class="flex mx-auto px-6 md:px-10 py-3 justify-between items-center border border-white/20 bg-white/10 backdrop-blur-sm rounded-full shadow-lg"
+        >
+          <div class="text-2xl text-white">
+            <sup class="font-bold">eco</sup
+            ><span class="font-serif italic text-green-primary font-semibold"
+              >Metric</span
+            >
+          </div>
 
-    <!-- Remix Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
-        integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+          <div
+            class="hidden md:flex flex-row gap-8 font-jakarta text-green-primary"
+          >
+            <a
+              href="#beranda"
+              class="hover:underline transition-all duration-300"
+              >Beranda</a
+            >
+            <a
+              href="#tentang"
+              class="hover:underline transition-all duration-300"
+              >Tentang</a
+            >
+            <a
+              href="#laporan"
+              class="hover:underline transition-all duration-300"
+              >Laporan</a
+            >
+          </div>
 
-<body class="bg-white/20 font-jakarta">
-    <header class="fixed top-0 left-0 w-full z-1000">
-        <nav class="mx-auto px-4 md:px-30 mt-4 md:mt-6">
-            <div
-                class="flex mx-auto px-6 md:px-10 py-3 justify-between items-center border border-white/20 bg-white/10 backdrop-blur-sm rounded-full shadow-lg">
-
-                <div class="text-2xl text-white">
-                    <sup class="font-bold">eco</sup><span
-                        class="font-serif italic text-green-primary font-semibold">Metric</span>
-                </div>
-
-                <div class="hidden md:flex flex-row gap-8 font-jakarta text-green-primary">
-                    <a href="#" class="font-bold hover:underline transition-all duration-300">Beranda</a>
-                    <a href="#" class="hover:underline transition-all duration-300">Lapor</a>
-                    <a href="#" class="hover:underline transition-all duration-300">Peta</a>
-                    <a href="#" class="hover:underline transition-all duration-300">Tentang</a>
-                </div>
-
-                <div class="md:hidden">
-                    <button id="hamburger-button" class="text-green-primary focus:outline-none p-2">
-                        <i class="ri-menu-5-line"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobile-menu"
-                class="hidden absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl p-6 space-y-4 shadow-2xl z-1001 md:hidden">
-                <a href="#" class="block text-lg font-bold text-[#1A4D2E]">Home</a>
-                <a href="#" class="block text-lg font-bold text-slate-500">Statistics</a>
-                <a href="#" class="block text-lg font-bold text-slate-500">Map View</a>
-                <a href="#" class="block text-lg font-bold text-slate-500">About Us</a>
-                <hr class="border-slate-100">
-            </div>
-        </nav>
-    </header>
-
-    <!-- hero -->
-    <section class="relative min-h-screen w-full overflow-hidden flex justify-center">
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute inset-0 bg-black/10 z-10"></div>
-
-            <video autoplay loop muted playsinline class="w-full h-full object-cover z-0">
-                <source src="https://www.pexels.com/id-id/download/video/12943516/" type="video/mp4">
-            </video>
+          <div class="md:hidden">
+            <button
+              id="hamburger-button"
+              class="text-green-primary focus:outline-none p-2"
+            >
+              <i class="bx bx-menu"></i>
+            </button>
+          </div>
         </div>
 
         <div
-            class="relative top-25 text-center text-transparent bg-clip-text bg-linear-to-b from-white/80 to-white/0 px-6 ">
-            <h1 class="text-5xl md:text-8xl font-jakarta font-bold leading-tight">
-                Pantau Lingkungan Kota dengan Mudah
-            </h1>
+          id="mobile-menu"
+          class="hidden absolute top-full left-4 right-4 mt-2 bg-white rounded-2xl p-6 space-y-4 shadow-2xl z-1001 md:hidden"
+        >
+          <a href="#" class="block text-lg font-bold text-[#1A4D2E]">Home</a>
+          <a href="#" class="block text-lg font-bold text-slate-500"
+            >Statistics</a
+          >
+          <a href="#" class="block text-lg font-bold text-slate-500"
+            >Map View</a
+          >
+          <a href="#" class="block text-lg font-bold text-slate-500"
+            >About Us</a
+          >
+          <hr class="border-slate-100" />
+        </div>
+      </nav>
+    </header>
+
+    <!-- hero -->
+    <section
+      class="relative min-h-screen w-full overflow-hidden flex justify-center"
+      id="beranda"
+    >
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0 bg-black/10 z-10"></div>
+
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full h-full object-cover z-0"
+        >
+          <source
+            src="https://www.pexels.com/id-id/download/video/12943516/"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div
+        class="relative top-25 text-center text-transparent bg-clip-text bg-linear-to-b from-white/80 to-white/0 px-6"
+      >
+        <h1 class="text-5xl md:text-8xl font-jakarta font-bold leading-tight">
+          Pantau Lingkungan Kota dengan Mudah
+        </h1>
+      </div>
+
+      <!-- tagline -->
+      <div class="absolute bottom-75 left-10 z-20 md:bottom-40 md:left-20">
+        <h2
+          class="text-2xl text-shadow-emerald-700 font-bold text-white md:text-5xl"
+        >
+          Laporkan Masalah,<br />Bantu Kota Jadi
+          <span class="font-serif italic font-light text-[28px] md:text-5xl"
+            >Lebih Baik</span
+          >
+        </h2>
+        <a href="#laporan">
+          <button
+            class="bg-neon-green py-2 px-4 text-sm mt-2 rounded-full md:mt-4 md:text-lg md:py-2 md:px-6 font-medium flex hover:px-6 transition-all duration-300"
+          >
+            Lapor Sekarang
+          </button>
+        </a>
+      </div>
+
+      <!-- card persen -->
+      <div
+        class="absolute bottom-5 right-10 z-20 flex flex-col items-end gap-6 w-170 md:bottom-10"
+      >
+        <!-- STATS -->
+        <div class="flex gap-4">
+          <!-- CARD -->
+          <div
+            class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36"
+          >
+            <span class="text-3xl font-bold md:text-4xl">87%</span>
+            <p class="text-sm mt-2 md:text-base">🌿 Green Score</p>
+          </div>
+          <!-- CARD -->
+          <div
+            class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36"
+          >
+            <span class="text-3xl font-bold md:text-4xl">2.1K</span>
+            <p class="text-sm mt-2 md:text-base">📋 Reports</p>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36"
+          >
+            <span class="text-3xl font-bold md:text-4xl">78%</span>
+            <p class="text-sm mt-2 md:text-base">♻️ Resolved</p>
+          </div>
         </div>
 
-        <!-- tagline -->
-        <div class="absolute bottom-75 left-10 z-20 md:bottom-40 md:left-20">
-            <h2 class="text-2xl text-shadow-emerald-700 font-bold text-white md:text-5xl">Laporkan Masalah,<br>Bantu
-                Kota Jadi <span class="font-serif italic font-light text-[28px] md:text-5xl">Lebih Baik</span></h2>
-            <button
-                class="bg-neon-green py-2 px-4 text-sm mt-2 rounded-full md:mt-4 md:text-lg md:py-2 md:px-6 font-medium flex hover:px-6 transition-all duration-300">Lapor
-                Sekarang</button>
-        </div>
+        <!-- TEXT -->
+        <p
+          class="text-white text-right text-sm w-100 font-light md:text-xl md:w-2/3 md:text-left"
+        >
+          Platform untuk melaporkan masalah lingkungan dan fasilitas umum secara
+          cepat dan langsung dari masyarakat.
+        </p>
 
-        <!-- card persen -->
-        <div class="absolute bottom-5 right-10 z-20 flex flex-col items-end gap-6 w-170 md:bottom-10">
-            <!-- STATS -->
-            <div class="flex gap-4">
-                <!-- CARD -->
-                <div
-                    class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36">
-                    <span class="text-3xl font-bold md:text-4xl">87%</span>
-                    <p class="text-sm mt-2 md:text-base">🌿 Green Score</p>
-                </div>
-                <!-- CARD -->
-                <div
-                    class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36">
-                    <span class="text-3xl font-bold md:text-4xl">2.1K</span>
-                    <p class="text-sm mt-2 md:text-base">📋 Reports</p>
-                </div>
-
-                <!-- CARD -->
-                <div
-                    class="bg-white/15 backdrop-blur-md border py-4 border-white/40 rounded-2xl w-30 flex flex-col items-center justify-center text-white md:w-36">
-                    <span class="text-3xl font-bold md:text-4xl">78%</span>
-                    <p class="text-sm mt-2 md:text-base">♻️ Resolved</p>
-                </div>
-
-            </div>
-
-            <!-- TEXT -->
-            <p class="text-white text-right text-sm w-100 font-light md:text-xl md:w-2/3 md:text-left">
-                Platform untuk melaporkan masalah lingkungan dan fasilitas umum secara cepat dan langsung dari
-                masyarakat.
-            </p>
-
-            <!-- BUTTON -->
-            <button
-                class="border border-white text-white rounded-full px-10 py-4 text-sm font-semibold backdrop-blur-xs hover:bg-white hover:text-black transition-all duration-300">
-                Explore Map ↗
-            </button>
-
-        </div>
-
+        <!-- BUTTON -->
+        <a href="#peta">
+          <button
+            class="border border-white text-white rounded-full px-10 py-4 text-sm font-semibold backdrop-blur-xs hover:bg-white hover:text-black transition-all duration-300"
+          >
+            Cara Melapor ↗
+          </button>
+        </a>
+      </div>
     </section>
 
     <!-- marquee -->
     <div class="overflow-hidden bg-lime-400 py-3 whitespace-nowrap">
-        <div class="animate-marquee inline-block text-white font-medium">
-            🌿 Bersih ✦ Nyaman ✦ Peduli Lingkungan ✦ Kota Lebih Baik ✦
-            🌿 Bersih ✦ Nyaman ✦ Peduli Lingkungan ✦ Kota Lebih Baik ✦
-        </div>
+      <div class="animate-marquee inline-block text-white font-medium">
+        🌿 Bersih ✦ Nyaman ✦ Peduli Lingkungan ✦ Kota Lebih Baik ✦ 🌿 Bersih ✦
+        Nyaman ✦ Peduli Lingkungan ✦ Kota Lebih Baik ✦
+      </div>
     </div>
 
-    <!-- pantau -->
-    <section class="w-full mx-auto flex flex-col py-10 gap-6 md:px-14 bg-white">
-        <div class="mx-6 text-green-primary flex flex-col gap-2">
-            <span class="font-semibold border w-fit border-green-primary rounded-full px-6 py-2">Peduli Kota</span>
-            <h3 class="font-semibold text-4xl md:text-5xl">Pantau Kondisi <br>di <span
-                    class="font-serif italic font-normal">Sekitarmu</span></h3>
-            <p class="md:text-lg leading-6">Lihat berbagai laporan masyarakat tentang lingkungan <br
-                    class="hidden md:block"> dan fasilitas umum secara transparan.</p>
-        </div>
-        <div class="px-4">
-            <div class="bg-green-primary/20 w-full p-6 lg:p-8 rounded-3xl">
-                <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <!-- card -->
-                    <div
-                        class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300">
-                        <i
-                            class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"></i>
-                        <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
-                        <h3 class="text-xl md:text-2xl font-medium">Kondisi <br>Lingkungan</h3>
-                        <div class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"></div>
-                        <p class="text-xs md:text-sm italic"><span class="text-[#22B257]">↑ 12% </span>Lebih baik dari
-                            bulan lalu
-                        </p>
-                    </div>
-                    <!-- card -->
-                    <div
-                        class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300">
-                        <i
-                            class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"></i>
-                        <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
-                        <h3 class="text-xl md:text-2xl font-medium">Kondisi <br>Lingkungan</h3>
-                        <div class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"></div>
-                        <p class="text-xs md:text-sm italic"><span class="text-[#22B257]">↑ 12% </span>Lebih baik dari
-                            bulan lalu
-                        </p>
-                    </div>
-                    <!-- card -->
-                    <div
-                        class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300">
-                        <i
-                            class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"></i>
-                        <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
-                        <h3 class="text-xl md:text-2xl font-medium">Kondisi <br>Lingkungan</h3>
-                        <div class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"></div>
-                        <p class="text-xs md:text-sm italic"><span class="text-[#22B257]">↑ 12% </span>Lebih baik dari
-                            bulan lalu
-                        </p>
-                    </div>
-                    <!-- card -->
-                    <div
-                        class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300">
-                        <i
-                            class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"></i>
-                        <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
-                        <h3 class="text-xl md:text-2xl font-medium">Kondisi <br>Lingkungan</h3>
-                        <div class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"></div>
-                        <p class="text-xs md:text-sm italic"><span class="text-[#22B257]">↑ 12% </span>Lebih baik dari
-                            bulan lalu
-                        </p>
-                    </div>
-                </div>
+    <!-- Tentang -->
+    <section
+      class="w-full mx-auto flex flex-col py-10 gap-6 md:px-14 bg-white"
+      id="tentang"
+    >
+      <div class="mx-6 text-green-primary flex flex-col gap-2">
+        <span
+          class="font-semibold border w-fit border-green-primary rounded-full px-6 py-2"
+          >Peduli Kota</span
+        >
+        <h3 class="font-semibold text-4xl md:text-5xl">
+          Pantau Kondisi <br />di
+          <span class="font-serif italic font-normal">Sekitarmu</span>
+        </h3>
+        <p class="md:text-lg leading-6">
+          Lihat berbagai laporan masyarakat tentang lingkungan
+          <br class="hidden md:block" />
+          dan fasilitas umum secara transparan.
+        </p>
+      </div>
+      <div class="px-4">
+        <div class="bg-green-primary/20 w-full p-6 lg:p-8 rounded-3xl">
+          <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <!-- card -->
+            <div
+              class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
+            >
+              <i
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+              ></i>
+              <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
+              <h3 class="text-xl md:text-2xl font-medium">
+                Kondisi <br />Lingkungan
+              </h3>
+              <div
+                class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"
+              ></div>
+              <p class="text-xs md:text-sm italic">
+                <span class="text-[#22B257]">↑ 12% </span>Lebih baik dari bulan
+                lalu
+              </p>
             </div>
+            <!-- card -->
+            <div
+              class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
+            >
+              <i
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+              ></i>
+              <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
+              <h3 class="text-xl md:text-2xl font-medium">
+                Kondisi <br />Lingkungan
+              </h3>
+              <div
+                class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"
+              ></div>
+              <p class="text-xs md:text-sm italic">
+                <span class="text-[#22B257]">↑ 12% </span>Lebih baik dari bulan
+                lalu
+              </p>
+            </div>
+            <!-- card -->
+            <div
+              class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
+            >
+              <i
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+              ></i>
+              <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
+              <h3 class="text-xl md:text-2xl font-medium">
+                Kondisi <br />Lingkungan
+              </h3>
+              <div
+                class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"
+              ></div>
+              <p class="text-xs md:text-sm italic">
+                <span class="text-[#22B257]">↑ 12% </span>Lebih baik dari bulan
+                lalu
+              </p>
+            </div>
+            <!-- card -->
+            <div
+              class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
+            >
+              <i
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+              ></i>
+              <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
+              <h3 class="text-xl md:text-2xl font-medium">
+                Kondisi <br />Lingkungan
+              </h3>
+              <div
+                class="h-2 rounded-full bg-linear-to-r from-[#A4FF00] to-[#629900] bg-clip"
+              ></div>
+              <p class="text-xs md:text-sm italic">
+                <span class="text-[#22B257]">↑ 12% </span>Lebih baik dari bulan
+                lalu
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="py-24 px-6 bg-[#F6F8F1]">
-        <!-- HEADER -->
-        <div class="text-center max-w-2xl mx-auto">
-            <span class="px-5 py-2 rounded-full border border-green-700 text-green-700 font-semibold">
-                Cara Melapor
-            </span>
-            <h2 class="text-5xl font-bold mt-6 text-[#1F1F1F]">
-                Laporkan Masalah <br>
-                Dalam 3 Langkah Mudah
-            </h2>
-            <p class="text-gray-500 mt-5 leading-relaxed">
-                Bantu lingkungan jadi lebih baik dengan melaporkan masalah secara cepat dan praktis.
-            </p>
+      <!-- HEADER -->
+      <div class="text-center max-w-2xl mx-auto">
+        <span
+          class="px-5 py-2 rounded-full border border-green-700 text-green-700 font-semibold"
+        >
+          Cara Melapor
+        </span>
+        <h2 class="text-5xl font-bold mt-6 text-[#1F1F1F]">
+          Laporkan Masalah <br />
+          Dalam 3 Langkah Mudah
+        </h2>
+        <p class="text-gray-500 mt-5 leading-relaxed">
+          Bantu lingkungan jadi lebih baik dengan melaporkan masalah secara
+          cepat dan praktis.
+        </p>
+      </div>
+
+      <!-- CARDS -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-w-7xl mx-auto"
+      >
+        <div
+          class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300"
+        >
+          <div
+            class="w-16 h-16 rounded-2xl bg-lime-100 flex items-center justify-center"
+          >
+            <i class="bx bx-file text-3xl text-lime-700"></i>
+          </div>
+          <h3 class="text-2xl font-bold mt-8">Isi Detail Laporan</h3>
+          <p class="text-gray-500 mt-4 leading-relaxed">
+            Tambahkan lokasi, kategori, dan deskripsi singkat agar laporan lebih
+            jelas.
+          </p>
         </div>
 
-        <!-- CARDS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-w-7xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 rounded-2xl bg-lime-100 flex items-center justify-center">
-                    <i class="ri-file-list-3-line text-3xl text-lime-700"></i>
-                </div>
-                <h3 class="text-2xl font-bold mt-8">
-                    Isi Detail Laporan
-                </h3>
-                <p class="text-gray-500 mt-4 leading-relaxed">
-                    Tambahkan lokasi, kategori, dan deskripsi singkat agar laporan lebih jelas.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
-                    <i class="ri-checkbox-circle-line text-3xl text-emerald-700"></i>
-                </div>
-                <h3 class="text-2xl font-bold mt-8">
-                    Pantau Progress
-                </h3>
-                <p class="text-gray-500 mt-4 leading-relaxed">
-                    Lihat update penanganan dan progres perbaikan secara real-time.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300">
-                <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center">
-                    <i class="ri-camera-line text-3xl text-green-700"></i>
-                </div>
-
-                <h3 class="text-2xl font-bold mt-8">
-                    Ambil Foto
-                </h3>
-                <p class="text-gray-500 mt-4 leading-relaxed">
-                    Foto masalah lingkungan atau fasilitas umum yang sudah selesai langsung dari HP kamu.
-                </p>
-            </div>
+        <div
+          class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300"
+        >
+          <div
+            class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center"
+          >
+            <i class="bx bx-check-circle text-3xl text-emerald-700"></i>
+          </div>
+          <h3 class="text-2xl font-bold mt-8">Pantau Progress</h3>
+          <p class="text-gray-500 mt-4 leading-relaxed">
+            Lihat update penanganan dan progres perbaikan secara real-time.
+          </p>
         </div>
+
+        <div
+          class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:-translate-y-2 transition duration-300"
+        >
+          <div
+            class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center"
+          >
+            <i class="bx bxs-camera text-3xl text-green-700"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold mt-8">Ambil Foto</h3>
+          <p class="text-gray-500 mt-4 leading-relaxed">
+            Foto masalah lingkungan atau fasilitas umum yang sudah selesai
+            langsung dari HP kamu.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- update -->
-    <section class="bg-[#F6F8F1]">
-        <div class="mx-6 py-6 text-green-primary">
-            <div class="bg-white px-6 py-4 rounded-2xl flex flex-col gap-6 md:p-8 lg:p-12">
-                <!-- header -->
-                <div>
-                    <div class="flex flex-col gap-2 text-end items-end mb-4">
-                        <span class="px-4 w-fit py-2 font-semibold border-2 border-green-primary rounded-full">Update
-                            Terus!</span>
-                        <h2 class="text-3xl font-bold">Laporan Terbaru <br>dari Warga</h2>
-                        <p class="font-normal">Lihat berbagai laporan yang dikirim masyarakat <br> secara langsung dan
-                            real-time.</p>
-                    </div>
-                    <button
-                        class="group inline-flex items-center w-fit text-sm bg-neon-green text-[#353535] font-semibold px-6 py-2 md:text-lg md:py-3 rounded-full border border-[#353535] overflow-hidden transition-all duration-300 group-hover:pr-6">
-                        Semua Laporan
-                    </button>
-                </div>
-
-                <!-- konten -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- card -->
-                    <div class="bg-green-50 rounded-xl p-6 w-fit">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex flex-row justify-between">
-                                <h3 class="text-2xl font-bold">Jalan Berlubang di Jonggol</h3>
-                                <!-- stattus -->
-                                <div
-                                    class="text-[#EE8428] text-xs border-2 h-fit border-[#D7CCBA] font-medium bg-[#FDF0DB] rounded-full w-fit px-4 py-2 hover:border-[#EE8428] hover:-translate-y-2 transition-all duration-300">
-                                    Menunggu</div>
-                            </div>
-                            <span class="text-[#537d63] text-sm">Infrastruktur Jalan</span>
-
-                            <p class="text-[#484848] text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Odio magni aliquam quo maiores ipsa culpa facilis alias corrupti provident iusto!</p>
-
-                            <!-- location -->
-                            <div
-                                class="text-gray-600 border-t border-b border-l-0 border-r-0 border-2 border-gray-600 py-2 px-2 text-sm mt-2">
-                                ini latitude longitude
-                            </div>
-
-                            <div class="flex flex-row gap-2 mt-2">
-                                <button
-                                    class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">Detail</button>
-                                <button class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">Hapus</button>
-                                <a href="update.html">
-                                    <button class="bg-yellow-500 text-white py-2 px-6 rounded-lg w-full">Edit</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card -->
-                    <div class="bg-green-50 rounded-xl p-6 w-fit">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex flex-row justify-between">
-                                <h3 class="text-2xl font-bold">Jalan Berlubang di Jonggol</h3>
-                                <!-- stattus -->
-                                <div
-                                    class="text-[#EE8428] text-xs border-2 h-fit border-[#D7CCBA] font-medium bg-[#FDF0DB] rounded-full w-fit px-4 py-2 hover:border-[#EE8428] hover:-translate-y-2 transition-all duration-300">
-                                    Menunggu</div>
-                            </div>
-                            <span class="text-[#537d63] text-sm">Infrastruktur Jalan</span>
-
-                            <p class="text-[#484848] text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Odio magni aliquam quo maiores ipsa culpa facilis alias corrupti provident iusto!</p>
-
-                            <!-- location -->
-                            <div
-                                class="text-gray-600 border-t border-b border-l-0 border-r-0 border-2 border-gray-600 py-2 px-2 text-sm mt-2">
-                                ini latitude longitude
-                            </div>
-
-                            <div class="flex flex-row gap-2 mt-2">
-                                <button
-                                    class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">Detail</button>
-                                <button class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">Hapus</button>
-                                <a href="update.html">
-                                    <button class="bg-yellow-500 text-white py-2 px-6 rounded-lg w-full">Edit</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card -->
-                    <div class="bg-green-50 rounded-xl p-6 w-fit">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex flex-row justify-between">
-                                <h3 class="text-2xl font-bold">Jalan Berlubang di Jonggol</h3>
-                                <!-- stattus -->
-                                <div
-                                    class="text-[#EE8428] text-xs border-2 h-fit border-[#D7CCBA] font-medium bg-[#FDF0DB] rounded-full w-fit px-4 py-2 hover:border-[#EE8428] hover:-translate-y-2 transition-all duration-300">
-                                    Menunggu</div>
-                            </div>
-                            <span class="text-[#537d63] text-sm">Infrastruktur Jalan</span>
-
-                            <p class="text-[#484848] text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Odio magni aliquam quo maiores ipsa culpa facilis alias corrupti provident iusto!</p>
-
-                            <!-- location -->
-                            <div
-                                class="text-gray-600 border-t border-b border-l-0 border-r-0 border-2 border-gray-600 py-2 px-2 text-sm mt-2">
-                                ini latitude longitude
-                            </div>
-
-                            <div class="flex flex-row gap-2 mt-2">
-                                <button
-                                    class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">Detail</button>
-                                <button class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">Hapus</button>
-                                <a href="update.html">
-                                    <button class="bg-yellow-500 text-white py-2 px-6 rounded-lg w-full">Edit</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card -->
-                    <div class="bg-green-50 rounded-xl p-6 w-fit">
-                        <div class="flex flex-col gap-2">
-                            <div class="flex flex-row justify-between">
-                                <h3 class="text-2xl font-bold">Jalan Berlubang di Jonggol</h3>
-                                <!-- stattus -->
-                                <div
-                                    class="text-[#EE8428] text-xs border-2 h-fit border-[#D7CCBA] font-medium bg-[#FDF0DB] rounded-full w-fit px-4 py-2 hover:border-[#EE8428] hover:-translate-y-2 transition-all duration-300">
-                                    Menunggu</div>
-                            </div>
-                            <span class="text-[#537d63] text-sm">Infrastruktur Jalan</span>
-
-                            <p class="text-[#484848] text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Odio magni aliquam quo maiores ipsa culpa facilis alias corrupti provident iusto!</p>
-
-                            <!-- location -->
-                            <div
-                                class="text-gray-600 border-t border-b border-l-0 border-r-0 border-2 border-gray-600 py-2 px-2 text-sm mt-2">
-                                ini latitude longitude
-                            </div>
-
-                            <div class="flex flex-row gap-2 mt-2">
-                                <button
-                                    class="bg-green-primary text-white py-2 px-6 rounded-lg w-full hover:bg-green-700 transition-colors duration-500">Detail</button>
-                                <button class="bg-red-500 text-white py-2 px-6 rounded-lg w-full">Hapus</button>
-                                <a href="update.html">
-                                    <button class="bg-yellow-500 text-white py-2 px-6 rounded-lg w-full">Edit</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section class="bg-[#F6F8F1]" id="laporan">
+      <div class="mx-6 py-6 text-green-primary">
+        <div
+          class="bg-white px-6 py-4 rounded-2xl flex flex-col gap-6 md:p-8 lg:p-12"
+        >
+          <!-- header -->
+          <div>
+            <div class="flex flex-col gap-2 text-end items-end mb-4">
+              <span
+                class="px-4 w-fit py-2 font-semibold border-2 border-green-primary rounded-full"
+                >Update Terus!</span
+              >
+              <h2 class="text-3xl font-bold">
+                Laporan Terbaru <br />dari Warga
+              </h2>
+              <p class="font-normal">
+                Lihat berbagai laporan yang dikirim masyarakat <br />
+                secara langsung dan real-time.
+              </p>
             </div>
-        </div>
-    </section>
-
-    <!-- map -->
-    <section class="bg-white px-8">
-        <div class="flex flex-col justify-center text-center items-center my-10 text-green-primary">
-            <span class="py-2 px-6 border border-green-primary font-semibold rounded-full text-green-primary w-fit">
-                Punya Keluhan?
-            </span>
-            <h2 class="font-bold text-4xl my-3"><span class="font-serif text-4xl italic font-semibold">Ayo</span> Lapor!
-            </h2>
-            <p>Jangan Ragu untuk lapor kerusakahadnahbsa</p>
-        </div>
-
-        <!-- map -->
-        <div class="flex flex-col md:flex-row justify-center relative ">
-            <a onclick="openModal()" class="bg-neon-green px-4 py-2 rounded-full w-fit border border-black text-sm font-medium absolute bottom-10 left-5 md:left-5 lg:left-35
-                hover:bg-green-primary hover:text-white transition-all duration-300">
+            <div class="flex items-center justify-between w-full">
+              <button
+                class="group inline-flex items-center w-fit text-sm bg-neon-green text-[#353535] font-semibold px-6 py-2 md:text-lg md:py-3 rounded-full border border-[#353535] overflow-hidden transition-all duration-300"
+              >
+                Semua Laporan
+              </button>
+              <button
+                onclick="openModal()"
+                class="bg-neon-green px-6 py-2 md:py-3 rounded-full border border-black text-sm md:text-lg font-semibold hover:bg-green-primary hover:text-white transition-all duration-300"
+              >
                 + Tambah Laporan
-            </a>
-            <div class="overflow-hidden mb-6 md:w-3/3 lg:px-30">
-                <iframe src="https://www.google.com/maps?q=Jusuf+Kala+Library&output=embed"
-                    class="w-full h-[300px] md:h-[400px] border-0 rounded-2xl" allowfullscreen="" loading="lazy">
-                </iframe>
+              </button>
             </div>
+          </div>
+          <!-- konten -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            id="reportsList"
+          ></div>
         </div>
+      </div>
     </section>
 
-    <footer class="bg-green-primary text-white px-8 py-10 mt-20 rounded-t-3xl">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
-            <!-- KIRI -->
-            <div class="max-w-sm">
-                <div class="text-3xl text-white">
-                    <sup class="font-bold">eco</sup><span class="font-serif italic text-4xl font-semibold">Metric</span>
-                </div>
-                <p class="text-white/70 mt-3 leading-relaxed">
-                    Platform pelaporan lingkungan untuk membantu masyarakat melaporkan masalah kota secara cepat dan
-                    transparan.
-                </p>
-            </div>
-
-            <!-- KANAN -->
-            <div class="flex gap-16">
-                <!-- MENU -->
-                <div class="flex flex-col gap-3">
-                    <h3 class="font-semibold text-lg">Menu</h3>
-                    <div class="flex flex-row gap-3">
-                        <a href="#" class="text-white/70 hover:text-neon-green transition">
-                            Beranda
-                        </a>
-                        <a href="#" class="text-white/70 hover:text-neon-green transition">
-                            Laporan
-                        </a>
-                        <a href="#" class="text-white/70 hover:text-neon-green transition">
-                            Peta
-                        </a>
-                        <a href="#" class="text-white/70 hover:text-neon-green transition">
-                            Tentang
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <footer class="bg-green-primary text-white px-8 py-10 rounded-t-3xl">
+      <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10"
+      >
+        <!-- Kiri -->
+        <div class="max-w-sm">
+          <div class="text-3xl text-white">
+            <sup class="font-bold">eco</sup
+            ><span class="font-serif italic text-4xl font-semibold"
+              >Metric</span
+            >
+          </div>
+          <p class="text-white/70 mt-3 leading-relaxed">
+            Platform pelaporan lingkungan untuk membantu masyarakat melaporkan
+            masalah kota secara cepat dan transparan.
+          </p>
         </div>
 
-        <!-- BOTTOM -->
-        <div class="border-t border-white/10 mt-10 pt-5 text-center text-white/50 text-sm">
-            © 2026 EcoReport. Semua hak dilindungi.
+        <!-- Kanan -->
+        <div class="flex gap-16">
+          <!-- menu -->
+          <div class="flex flex-col gap-3">
+            <h3 class="font-semibold text-lg">Menu</h3>
+            <div class="flex flex-row gap-3">
+              <a
+                href="#beranda"
+                class="text-white/70 hover:text-neon-green transition"
+              >
+                Beranda
+              </a>
+              <a
+                href="#tentang"
+                class="text-white/70 hover:text-neon-green transition"
+              >
+                Tentang
+              </a>
+              <a
+                href="#laporan"
+                class="text-white/70 hover:text-neon-green transition"
+              >
+                Laporan
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
 
+      <!-- Bottom -->
+      <div
+        class="border-t border-white/10 mt-10 pt-5 text-center text-white/50 text-sm"
+      >
+        © 2026 EcoReport. Semua hak dilindungi.
+      </div>
     </footer>
 
-    <!-- BACKDROP -->
-    <div id="modal" class="fixed inset-0 bg-black/40 flex pt-20 items-center justify-center z-50 hidden">
-        <!-- MODAL -->
-        <div class="w-[800px] h-fit bg-[#F7F7F7] rounded-2xl overflow-hidden shadow-2xl">
-            <!-- HEADER -->
-            <div class="bg-green-800 px-8 py-6 flex items-center justify-between">
-                <h2 class="text-white text-2xl font-bold">
-                    Detail Laporan
-                </h2>
+    <!-- Backdrop -->
+    <div
+      id="modalDetail"
+      class="fixed inset-0 bg-black/40 flex pt-20 p-8 items-center justify-center hidden"
+      style="z-index: 99999"
+    >
+      <div
+        class="w-[800px] h-fit bg-[#F7F7F7] rounded-2xl overflow-hidden shadow-2xl"
+      >
+        <div class="bg-green-800 px-8 py-6 flex items-center justify-between">
+          <h2 class="text-white text-2xl font-bold">Detail Laporan</h2>
 
-                <button onclick="closeModal()" class="text-white text-2xl font-bold hover:opacity-70 transition">
-                    ×
-                </button>
-            </div>
-            <!-- CONTENT -->
-            <div class="p-8">
-                <!-- TITLE + STATUS -->
-                <div class="flex items-start justify-between">
-                    <div>
-                        <h3 class="text-2xl font-bold text-green-800">
-                            Lorem Ipsum
-                        </h3>
-                    </div>
-                    <span class="bg-blue-100 text-blue-500 px-6 py-2 rounded-full text-sm italic">
-                        Pending
-                    </span>
-                </div>
-
-                <!-- DESC -->
-                <p class="text-gray-400 leading-relaxed mt-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, cupiditate asperiores.
-                    Repellendus cumque dolorem odit natus in officia autem.
-                </p>
-
-                <!-- USER -->
-                <div class="flex items-center justify-between mt-10">
-                    <h4 class="text-xl font-semibold text-gray-600">
-                        Edward Martin
-                    </h4>
-                    <p class="text-xl italic text-gray-500">
-                        martin@cort.com
-                    </p>
-                </div>
-
-                <!-- FORM -->
-                <div class="mt-10 flex flex-col gap-2">
-                    <!-- ITEM -->
-                    <div class="flex items-center gap-6">
-                        <label class="w-40 text-xl font-semibold text-green-800">
-                            No. Telp:
-                        </label>
-
-                        <div class="flex-1 h-10 border border-gray-300 rounded-md bg-white"></div>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="flex items-center gap-6">
-                        <label class="w-40 text-xl font-semibold text-green-800">
-                            Lokasi:
-                        </label>
-
-                        <div class="flex-1 h-10 border border-gray-300 rounded-md bg-white"></div>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="flex items-center gap-6">
-                        <label class="w-40 text-xl font-semibold text-green-800">
-                            Kecamatan:
-                        </label>
-
-                        <div class="flex-1 h-10 border border-gray-300 rounded-md bg-white"></div>
-                    </div>
-                    <!-- ITEM -->
-                    <div class="flex items-center gap-6">
-                        <label class="w-40 text-xl font-semibold text-green-800">
-                            Kelurahan:
-                        </label>
-
-                        <div class="flex-1 h-10 border border-gray-300 rounded-md bg-white"></div>
-                    </div>
-                </div>
-
-                <!-- FOOTER -->
-                <div class="flex items-center justify-between mt-10">
-                    <span class="border border-green-300 text-green-700 px-4 py-2 rounded-md text-md bg-green-50">
-                        Fasilitas Umum
-                    </span>
-                    <p class="text-md italic text-gray-400">
-                        31/01/2026
-                    </p>
-                </div>
-
-            </div>
-
+          <button
+            onclick="closeDetailModal()"
+            class="text-white text-2xl font-bold hover:opacity-70 transition"
+          >
+            ×
+          </button>
         </div>
+
+        <div class="p-8">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3
+                class="text-2xl font-bold text-green-800"
+                id="detailTitle"
+              ></h3>
+            </div>
+            <span
+              class="bg-blue-100 text-blue-500 px-6 py-2 rounded-full text-sm italic"
+              id="detailStatus"
+            >
+            </span>
+          </div>
+
+          <p class="text-gray-400 leading-relaxed mt-6" id="detailDesc"></p>
+
+          <div class="flex items-center justify-between mt-10">
+            <h4
+              class="text-xl font-semibold text-gray-600"
+              id="detailAuthor"
+            ></h4>
+            <p class="text-xl italic text-gray-500" id="detailEmail"></p>
+          </div>
+
+          <div class="mt-10 flex flex-col gap-2">
+            <div class="flex items-center gap-6">
+              <label class="w-40 text-xl font-semibold text-green-800">
+                No. Telp:
+              </label>
+
+              <div
+                class="flex-1 h-10 border border-gray-300 p-2 rounded-md bg-white"
+                id="detailPhone"
+              ></div>
+            </div>
+
+            <div class="flex items-center gap-6">
+              <label class="w-40 text-xl font-semibold text-green-800">
+                Lokasi:
+              </label>
+
+              <div
+                class="flex-1 h-10 border border-gray-300 p-2 rounded-md bg-white"
+                id="detailLocation"
+              ></div>
+            </div>
+
+            <div class="flex items-center gap-6">
+              <label class="w-40 text-xl font-semibold text-green-800">
+                Kecamatan:
+              </label>
+
+              <div
+                class="flex-1 h-10 border border-gray-300 p-2 rounded-md bg-white"
+                id="detailKecamatan"
+              ></div>
+            </div>
+
+            <div class="flex items-center gap-6">
+              <label class="w-40 text-xl font-semibold text-green-800">
+                Kelurahan:
+              </label>
+
+              <div
+                class="flex-1 h-10 border border-gray-300 p-2 rounded-md bg-white"
+                id="detailKelurahan"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mt-10">
+            <span
+              class="border border-green-300 text-green-700 px-4 py-2 rounded-md text-md bg-green-50"
+              id="detailKategori"
+            >
+            </span>
+            <p class="text-md italic text-gray-400" id="detailDate">
+              31/01/2026
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        const modal = document.getElementById('modal');
-        const btn = document.getElementById('hamburger-button');
-        const menu = document.getElementById('mobile-menu');
+    <!-- Modal Tambah -->
+    <div
+      id="modalTambah"
+      class="hidden fixed inset-0 bg-black/40 flex items-start justify-center py-10 overflow-y-auto"
+      style="z-index: 9999"
+    >
+      <div
+        class="bg-white rounded-2xl border-2 lg:w-2xl border-green-800 overflow-y-auto animate-slideIn"
+      >
+        <!-- HEADER -->
+        <div
+          class="flex justify-between items-center bg-green-800 px-6 py-6 border-b-2 border-green-800 rounded-t-xl sticky top-0"
+        >
+          <h2 class="text-white text-3xl font-semibold">Tambah Laporan</h2>
+          <button
+            onclick="closeModal()"
+            class="text-white text-4xl leading-none w-8 h-8 flex items-center justify-center hover:text-red-400 transition-colors duration-300 bg-transparent border-none cursor-pointer"
+          >
+            &times;
+          </button>
+        </div>
 
-        function openModal() {
-            modal.style.display = "flex";
-        }
+        <!-- FORM -->
+        <form id="addForm" class="p-6 flex flex-col gap-4">
+          <!-- Judul -->
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-semibold text-gray-700"
+              >Judul Laporan*</label
+            >
+            <input
+              id="judul"
+              type="text"
+              placeholder="Contoh: Jalan Berlubang di Jonggol"
+              class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+              required
+            />
+          </div>
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
+          <!-- Kategori -->
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-semibold text-gray-700">Kategori*</label>
+            <select
+              id="kategori"
+              class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
+              required
+            >
+              <option value="">Pilih Kategori</option>
+              <option value="jalan">Jalan dan Insfrastruktur</option>
+              <option value="kebersihan">Kebersihan</option>
+              <option value="lampu">Lampu Jalan</option>
+              <option value="drainase">Drainase</option>
+              <option value="fasilitas">Fasilitas Umum</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+          </div>
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+          <!-- Deskripsi -->
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-semibold text-gray-700"
+              >Deskripsi Laporan*</label
+            >
+            <textarea
+              id="deskripsi"
+              rows="4"
+              placeholder="Jelaskan detail laporan"
+              class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none"
+              required
+            ></textarea>
+          </div>
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                menu.classList.add('hidden');
-            }
-        });
-    </script>
-</body>
+          <!-- Lokasi -->
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-semibold text-gray-700">Lokasi*</label>
+            <input
+              id="lokasi"
+              type="text"
+              placeholder="Diisi otomatis dari GPS..."
+              class="border border-gray-300 rounded-lg px-4 py-2 text-sm bg-gray-100 text-gray-400 cursor-not-allowed"
+              readonly
+            />
+          </div>
 
+          <!-- Kecamatan + Kelurahan -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-semibold text-gray-700"
+                >Kecamatan*</label
+              >
+              <input
+                id="kecamatan"
+                type="text"
+                placeholder="Contoh: Jonggol"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-semibold text-gray-700"
+                >Kelurahan*</label
+              >
+              <input
+                id="kelurahan"
+                type="text"
+                placeholder="Contoh: Sukasirna"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <hr class="border-gray-200 my-2" />
+
+          <!-- Nama -->
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-semibold text-gray-700"
+              >Nama Pelapor*</label
+            >
+            <input
+              id="nama"
+              type="text"
+              placeholder="Nama Lengkap"
+              class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <!-- Telepon + Email -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-semibold text-gray-700"
+                >Telepon*</label
+              >
+              <input
+                id="telepon"
+                type="tel"
+                placeholder="Nomor Telepon"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                required
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-semibold text-gray-700">Email*</label>
+              <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex justify-end gap-3 mt-2">
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="px-6 py-2 rounded-lg border border-gray-300 text-gray-600 text-sm font-semibold hover:bg-gray-100 transition-colors duration-300"
+            >
+              Batal
+            </button>
+            <button
+              type="submit"
+              class="px-6 py-2 rounded-lg bg-green-800 text-white text-sm font-semibold hover:bg-green-700 transition-colors duration-300"
+            >
+              Kirim Laporan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/reportManager.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/map.js"></script>
+  </body>
 </html>

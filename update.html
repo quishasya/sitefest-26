@@ -1,209 +1,343 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ecoMetric | E-Report Platform</title>
 
-    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="src/output.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+    <!-- Boxicon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-    <!-- Remix Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
-        integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body class="font-jakarta md:px-10">
+  <body class="font-jakarta md:px-10">
     <section class="mx-auto my-auto p-6 md:p-10">
-        <div class="mb-10 text-green-primary">
-            <div class="flex flex-row items-center mb-2 font-bold gap-2 text-xl">
-                <a href="index.html">
-                    <i class="ri-arrow-left-s-line"></i>
-                </a>                
-                <h1 class="text-3xl">Update Laporan</h1>
-            </div>
-            <p class="pl-7 text-lg">Perbarui informasi terbaru terkait penanganan laporan ini.</p>
+      <div class="mb-10 text-green-primary">
+        <div class="flex flex-row items-center mb-2 font-bold gap-2 text-xl">
+          <a href="index.html">
+            <i class="bx bx-chevron-left"></i>
+          </a>
+          <h1 class="text-3xl">Update Laporan</h1>
         </div>
+        <p class="pl-7 text-lg">
+          Perbarui informasi terbaru terkait penanganan laporan ini.
+        </p>
+      </div>
 
-        <!-- Laporan Lama -->
+      <!-- Laporan Lama -->
+      <div
+        class="border-2 items-center border-gray-300 rounded-xl h-fit py-6 px-4 flex flex-col gap-4 md:gap-0 md:flex-row mx-6"
+      >
+        <!-- img -->
         <div
-            class="border-2 items-center border-gray-300 rounded-xl h-fit py-6 px-4 flex flex-col gap-4 md:gap-0 md:flex-row mx-6">
-            <!-- img -->
-            <div class="bg-gray-200 h-40 w-full md:w-1/3 rounded-lg flex justify-center items-center">
-                <img src="" alt="blm ada img">
-            </div>
-            <div class="flex flex-col gap-1 w-full px-6">
-                <h2 class="text-2xl font-semibold">Jalan Berlubang dan Lampu Jalan Mati</h2>
-                <div class="flex flex-row gap-2">
-                    <i class="ri-map-pin-2-line"></i>
-                    <h3 class="text-lg">Jl. Sudirman Raya</h3>
-                </div>
-
-                <!-- tanggal laporan dibuat -->
-                <div class="flex flex-row gap-2">
-                    <i class="ri-calendar-line"></i>
-                    <h3>Dilaporkan Pada 13 Mei 2026</h3>
-                </div>
-
-                <hr class="text-gray-400 my-2">
-
-                <!-- id laporn -->
-                <div class="flex flex-row justify-between items-center">
-                    <p class="text-sm">ID Laporan: #EIOOR-00391</p>
-                    <span
-                        class="bg-amber-50 border text-xs border-amber-600 text-amber-600 py-2 px-6 rounded-lg">Diproses</span>
-                </div>
-
-            </div>
+          class="bg-gray-200 h-40 w-full md:w-1/3 rounded-lg overflow-hidden flex justify-center items-center"
+        >
+          <img
+            id="card-img"
+            src=""
+            alt="blm ada img"
+            class="w-full h-full object-cover hidden"
+          />
         </div>
+        <div class="flex flex-col gap-1 w-full px-6">
+          <h2 class="text-2xl font-semibold" id="display-title">–</h2>
+          <div class="flex flex-row gap-2">
+            <i class="bx bx-map"></i>
+            <h3 class="text-lg" id="display-location">–</h3>
+          </div>
 
-        <!-- Input Detail -->
-        <div class="m-4 md:my-8 md:mx-6 border-b-2 items-center pb-8 border-green-primary/60">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Judul -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Judul Laporan
-                    </label>
+          <!-- tanggal laporan dibuat -->
+          <div class="flex flex-row gap-2">
+            <i class="bx bx-calendar"></i>
+            <h3>Dilaporkan Pada <span id="display-date">–</span></h3>
+          </div>
 
-                    <select
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                        <option>Jalan & Infrastruktur</option>
-                        <option>Kebersihan</option>
-                        <option>Lampu Jalan</option>
-                        <option>Fasilitas Umum</option>
-                        <option>Drainase</option>
-                        <option>Lainnya</option>
-                    </select>
-                </div>
-                <!-- Lokasi -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Lokasi
-                    </label>
+          <hr class="text-gray-400 my-2" />
 
-                    <input type="text" placeholder="Contoh: Jl.Merdeka"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <!-- Email Pelapor -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Kecamatan
-                    </label>
-
-                    <input type="email" placeholder="Contoh: Bogor"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <!-- No Telpon Pelapor -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Kelurahan
-                    </label>
-
-                    <input type="number" placeholder="Contoh: Sukasirna"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <div class="flex flex-col gap-2 mt-4">
-                    <label for="">Deskripsi</label>
-                    <textarea
-                        class="w-full h-40 px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
-                        placeholder="Contoh: Lampu Jalan mati 2 di taman mini" name="" id=""></textarea>
-                </div>
-
-                <!-- Input Img -->
-                <div class="flex flex-row gap-2">
-                    <label
-                        class="border-2 h-40 w-full md:w-fit md:mt-12 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition">
-
-                        <input type="file" id="upload" accept="image/*" capture="environment" class="hidden">
-
-                        <i class="ri-camera-line text-5xl text-green-700"></i>
-
-                        <p class="mt-4 font-semibold">
-                            Ambil Foto
-                        </p>
-
-                        <span class="text-sm text-gray-400">
-                            Gunakan kamera HP
-                        </span>
-
-                    </label>
-                    <img id="preview" class="hidden w-full h-40 mt-12 object-cover overflow-hidden rounded-2xl">
-                </div>
-
-
-            </div>
-
+          <!-- id laporn -->
+          <div class="flex flex-row justify-between items-center">
+            <p class="text-sm" id="display-id">ID Laporan: –</p>
+            <!-- <span
+              class="bg-amber-50 border text-xs border-amber-600 text-amber-600 py-2 px-6 rounded-lg"
+              id="display-status"
+              >–</span
+            > -->
+            <select
+              id="status"
+              class="bg-amber-50 border text-xs border-amber-600 text-amber-600 py-2 px-4 rounded-lg outline-none cursor-pointer"
+            >
+              <option value="pending">Menunggu</option>
+              <option value="progress">Diproses</option>
+              <option value="resolve">Selesai</option>
+            </select>
+          </div>
         </div>
+      </div>
 
-        <!-- Input Pelapor -->
-        <div class="m-4 md:my-8 md:mx-6 border-b-2  pb-8 border-green-primary/60">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Judul -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Judul Laporan
-                    </label>
+      <!-- Input Detail -->
+      <div
+        class="m-4 md:my-8 md:mx-6 border-b-2 items-center pb-8 border-green-primary/60"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Kategori -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              Kategori Laporan
+            </label>
 
-                    <input type="text" placeholder="Contoh: Jalan Berlubang"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <!-- Nama Pelapor -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Nama Pelapor
-                    </label>
+            <select
+              id="kategori"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            >
+              <option value="">Pilih Kategori</option>
+              <option value="jalan">Jalan dan Insfrastruktur</option>
+              <option value="kebersihan">Kebersihan</option>
+              <option value="lampu">Lampu Jalan</option>
+              <option value="drainase">Drainase</option>
+              <option value="fasilitas">Fasilitas Umum</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+          </div>
+          <!-- Lokasi -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700"> Lokasi </label>
 
-                    <input type="text" placeholder="Contoh: Emma Watson"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <!-- Email Pelapor -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        Email
-                    </label>
+            <input
+              type="text"
+              id="lokasi"
+              placeholder="Contoh: Jl.Merdeka"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
 
-                    <input type="email" placeholder="Contoh: Emma@gmail.com"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
-                <!-- No Telpon Pelapor -->
-                <div>
-                    <label class="block mb-2 font-medium text-gray-700">
-                        No. Telpon
-                    </label>
+          <!-- Kecamatan -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              Kecamatan
+            </label>
+            <input
+              type="text"
+              id="kecamatan"
+              placeholder="Contoh: Bogor"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
 
-                    <input type="number" placeholder="Contoh: 06767676767"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200">
-                </div>
+          <!-- Kelurahan -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              Kelurahan
+            </label>
+            <input
+              type="text"
+              id="kelurahan"
+              placeholder="Contoh: Sukasirna"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
 
-            </div>
+          <div class="flex flex-col gap-2 mt-4">
+            <label for="">Deskripsi</label>
+            <textarea
+              class="w-full h-40 px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+              placeholder="Contoh: Lampu Jalan mati 2 di taman mini"
+              id="deskripsi"
+            ></textarea>
+          </div>
+
+          <!-- Input Img -->
+          <div class="flex flex-row gap-2">
+            <label
+              class="border-2 h-40 w-full md:w-fit md:mt-12 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition"
+            >
+              <input
+                type="file"
+                id="upload"
+                accept="image/*"
+                capture="environment"
+                class="hidden"
+              />
+
+              <i class="bx bx-camera text-5xl text-green-700"></i>
+
+              <p class="mt-4 font-semibold">Ambil Foto</p>
+
+              <span class="text-sm text-center text-gray-400">
+                Gunakan kamera HP
+              </span>
+            </label>
+            <img
+              id="preview"
+              class="hidden w-full h-40 mt-12 object-cover rounded-2xl"
+            />
+          </div>
         </div>
+      </div>
+      <!-- Input Pelapor -->
+      <div class="m-4 md:my-8 md:mx-6 border-b-2 pb-8 border-green-primary/60">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Judul -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              Judul Laporan
+            </label>
+            <input
+              type="text"
+              id="judul"
+              placeholder="Contoh: Jalan Berlubang"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
 
-        <button class="bg-green-primary text-white py-2 w-full mx-2 rounded-lg md:w-fit md:px-4 md:ml-6">Simpan
-            Perubahan</button>
+          <!-- Nama Pelapor -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              Nama Pelapor
+            </label>
+            <input
+              type="text"
+              id="nama"
+              placeholder="Contoh: Emma Watson"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
 
+          <!-- Email Pelapor -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Contoh: Emma@gmail.com"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
+
+          <!-- No Telpon Pelapor -->
+          <div>
+            <label class="block mb-2 font-medium text-gray-700">
+              No. Telpon
+            </label>
+            <input
+              type="tel"
+              id="telepon"
+              placeholder="Contoh: 06767676767"
+              class="w-full px-4 py-2 border border-gray-300 rounded-xl outline-none focus:ring-4 focus:ring-gray-200"
+            />
+          </div>
+        </div>
+      </div>
+      <button
+        id="btn-simpan"
+        class="bg-green-primary text-white py-2 w-full mx-2 rounded-lg md:w-fit md:px-4 md:ml-6"
+      >
+        Simpan Perubahan
+      </button>
     </section>
 
+    <!-- JS -->
+    <script src="/js/data.js"></script>
     <script>
+      const upload = document.getElementById("upload");
+      const preview = document.getElementById("preview");
+      const cardImg = document.getElementById("card-img");
 
-        const upload = document.getElementById("upload");
-        const preview = document.getElementById("preview");
+      function updateStatusColor(status) {
+        const el = document.getElementById("status");
+        el.className =
+          "border text-xs py-2 px-4 rounded-lg outline-none cursor-pointer ";
 
-        upload.addEventListener("change", (e) => {
+        if (status === "pending") {
+          el.classList.add("bg-amber-50", "border-amber-600", "text-amber-600");
+        } else if (status === "progress") {
+          el.classList.add("bg-blue-100", "border-blue-400", "text-blue-500");
+        } else if (status === "resolve") {
+          el.classList.add(
+            "bg-green-100",
+            "border-green-400",
+            "text-green-400",
+          );
+        }
+      }
 
-            const file = e.target.files[0];
+      upload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const url = URL.createObjectURL(file);
+          preview.src = url;
+          preview.classList.remove("hidden");
+          cardImg.src = url;
+          cardImg.classList.remove("hidden");
+        }
+      });
 
-            if (file) {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
 
-                preview.src = URL.createObjectURL(file);
+      const report = reports.find((r) => r.id === id);
 
-                preview.classList.remove("hidden");
+      if (!report) {
+        alert("Laporan tidak ditemukan!");
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("display-title").textContent = report.title;
+        document.getElementById("display-location").textContent =
+          report.location;
+        document.getElementById("display-date").textContent = new Date(
+          report.createdAt,
+        ).toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+        document.getElementById("display-id").textContent =
+          "ID Laporan: #" + report.id;
+        document.getElementById("status").value = report.status || "pending";
+        updateStatusColor(report.status || "pending");
 
-            }
-
+        document.getElementById("status").addEventListener("change", (e) => {
+          updateStatusColor(e.target.value);
         });
 
-    </script>
+        document.getElementById("status").value = report.status || "pending";
+        document.getElementById("kategori").value = report.category || "";
+        document.getElementById("lokasi").value = report.location || "";
+        document.getElementById("kecamatan").value = report.kecamatan || "";
+        document.getElementById("kelurahan").value = report.kelurahan || "";
+        document.getElementById("deskripsi").value = report.description || "";
+        document.getElementById("judul").value = report.title || "";
+        document.getElementById("nama").value = report.name || "";
+        document.getElementById("email").value = report.email || "";
+        document.getElementById("telepon").value = report.phone || "";
 
-</body>
+        document.getElementById("btn-simpan").addEventListener("click", () => {
+          const idx = reports.findIndex((r) => r.id === id);
+          if (idx === -1) return;
+
+          reports[idx] = {
+            ...reports[idx],
+            title: document.getElementById("judul").value,
+            category: document.getElementById("kategori").value,
+            description: document.getElementById("deskripsi").value,
+            location: document.getElementById("lokasi").value,
+            kecamatan: document.getElementById("kecamatan").value,
+            kelurahan: document.getElementById("kelurahan").value,
+            name: document.getElementById("nama").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("telepon").value,
+            status: document.getElementById("status").value,
+          };
+
+          localStorage.setItem("reports", JSON.stringify(reports));
+          alert("Laporan berhasil diperbarui!");
+          window.location.href = "index.html";
+        });
+      }
+    </script>
+  </body>
+</html>
