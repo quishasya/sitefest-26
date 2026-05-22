@@ -7,20 +7,10 @@
     <link rel="stylesheet" href="src/output.css" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
-    <!-- Remix Icon -->
+    <!-- Boxicon -->
     <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
-      integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Leaflet -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
     />
   </head>
 
@@ -55,9 +45,6 @@
               class="hover:underline transition-all duration-300"
               >Laporan</a
             >
-            <a href="#peta" class="hover:underline transition-all duration-300"
-              >Peta</a
-            >
           </div>
 
           <div class="md:hidden">
@@ -65,7 +52,7 @@
               id="hamburger-button"
               class="text-green-primary focus:outline-none p-2"
             >
-              <i class="ri-menu-5-line"></i>
+              <i class="bx bx-menu"></i>
             </button>
           </div>
         </div>
@@ -181,7 +168,7 @@
           <button
             class="border border-white text-white rounded-full px-10 py-4 text-sm font-semibold backdrop-blur-xs hover:bg-white hover:text-black transition-all duration-300"
           >
-            Explore Map ↗
+            Cara Melapor ↗
           </button>
         </a>
       </div>
@@ -223,7 +210,7 @@
               class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
             >
               <i
-                class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
               ></i>
               <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
               <h3 class="text-xl md:text-2xl font-medium">
@@ -242,7 +229,7 @@
               class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
             >
               <i
-                class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
               ></i>
               <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
               <h3 class="text-xl md:text-2xl font-medium">
@@ -261,7 +248,7 @@
               class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
             >
               <i
-                class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
               ></i>
               <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
               <h3 class="text-xl md:text-2xl font-medium">
@@ -280,7 +267,7 @@
               class="flex flex-col gap-3 p-4 bg-white border-2 border-black/30 rounded-2xl hover:border-green-400 hover:shadow-green-50 transition-all duration-300"
             >
               <i
-                class="ri-leaf-line bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
+                class="bx bx-leaf bg-green-600 w-fit rounded-lg md:text-2xl px-2 py-1 text-white border-3 border-white/70"
               ></i>
               <h4 class="font-bold text-3xl md:text-4xl">34%</h4>
               <h3 class="text-xl md:text-2xl font-medium">
@@ -327,7 +314,7 @@
           <div
             class="w-16 h-16 rounded-2xl bg-lime-100 flex items-center justify-center"
           >
-            <i class="ri-file-list-3-line text-3xl text-lime-700"></i>
+            <i class="bx bx-file text-3xl text-lime-700"></i>
           </div>
           <h3 class="text-2xl font-bold mt-8">Isi Detail Laporan</h3>
           <p class="text-gray-500 mt-4 leading-relaxed">
@@ -342,7 +329,7 @@
           <div
             class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center"
           >
-            <i class="ri-checkbox-circle-line text-3xl text-emerald-700"></i>
+            <i class="bx bx-check-circle text-3xl text-emerald-700"></i>
           </div>
           <h3 class="text-2xl font-bold mt-8">Pantau Progress</h3>
           <p class="text-gray-500 mt-4 leading-relaxed">
@@ -356,7 +343,7 @@
           <div
             class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center"
           >
-            <i class="ri-camera-line text-3xl text-green-700"></i>
+            <i class="bx bxs-camera text-3xl text-green-700"></i>
           </div>
 
           <h3 class="text-2xl font-bold mt-8">Ambil Foto</h3>
@@ -389,11 +376,19 @@
                 secara langsung dan real-time.
               </p>
             </div>
-            <button
-              class="group inline-flex items-center w-fit text-sm bg-neon-green text-[#353535] font-semibold px-6 py-2 md:text-lg md:py-3 rounded-full border border-[#353535] overflow-hidden transition-all duration-300 group-hover:pr-6"
-            >
-              Semua Laporan
-            </button>
+            <div class="flex items-center justify-between w-full">
+              <button
+                class="group inline-flex items-center w-fit text-sm bg-neon-green text-[#353535] font-semibold px-6 py-2 md:text-lg md:py-3 rounded-full border border-[#353535] overflow-hidden transition-all duration-300"
+              >
+                Semua Laporan
+              </button>
+              <button
+                onclick="openModal()"
+                class="bg-neon-green px-6 py-2 md:py-3 rounded-full border border-black text-sm md:text-lg font-semibold hover:bg-green-primary hover:text-white transition-all duration-300"
+              >
+                + Tambah Laporan
+              </button>
+            </div>
           </div>
           <!-- konten -->
           <div
@@ -404,44 +399,7 @@
       </div>
     </section>
 
-    <!-- map -->
-    <section class="bg-white px-8" id="peta">
-      <div
-        class="flex flex-col justify-center text-center items-center my-10 text-green-primary"
-      >
-        <span
-          class="py-2 px-6 border border-green-primary font-semibold rounded-full text-green-primary w-fit"
-        >
-          Punya Keluhan?
-        </span>
-        <h2 class="font-bold text-4xl my-3">
-          <span class="font-serif text-4xl italic font-semibold">Ayo</span>
-          Lapor!
-        </h2>
-        <p>Jangan Ragu untuk lapor kerusakan!</p>
-      </div>
-
-      <!-- map -->
-      <div class="relative flex flex-col md:flex-row justify-center">
-        <div class="mb-6 md:w-3/3 lg:px-30">
-          <div class="relative">
-            <div
-              id="map"
-              class="w-full h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl"
-            ></div>
-            <button
-              onclick="openModal()"
-              style="z-index: 999"
-              class="absolute bottom-5 left-5 bg-neon-green px-10 py-3 rounded-full border border-black text-sm font-semibold shadow-xl hover:bg-green-primary hover:text-white transition-all duration-300"
-            >
-              + Tambah Laporan
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-green-primary text-white px-8 py-10 mt-20 rounded-t-3xl">
+    <footer class="bg-green-primary text-white px-8 py-10 rounded-t-3xl">
       <div
         class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10"
       >
@@ -482,12 +440,6 @@
                 class="text-white/70 hover:text-neon-green transition"
               >
                 Laporan
-              </a>
-              <a
-                href="#peta"
-                class="text-white/70 hover:text-neon-green transition"
-              >
-                Peta
               </a>
             </div>
           </div>

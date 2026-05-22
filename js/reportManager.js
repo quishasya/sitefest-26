@@ -6,7 +6,6 @@ function saveReports() {
 function addReport() {
   const report = {
     id: Date.now().toString(),
-
     title: document.getElementById("judul").value,
     category: document.getElementById("kategori").value,
     description: document.getElementById("deskripsi").value,
@@ -16,21 +15,46 @@ function addReport() {
     name: document.getElementById("nama").value,
     email: document.getElementById("email").value,
     phone: document.getElementById("telepon").value,
-
     status: "pending",
     createdAt: new Date().toISOString(),
     coordinates: null,
   };
 
-  //   Meminta izin lokasi ke device
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        report.coordinates = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        };
-        report.location = `${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}`;
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+
+        report.coordinates = { lat, lng };
+
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`,
+          );
+          const data = await res.json();
+
+          const addr = data.address;
+          report.location =
+            addr.road ||
+            addr.neighbourhood ||
+            addr.suburb ||
+            addr.village ||
+            addr.town ||
+            addr.city ||
+            data.display_name;
+
+          if (!document.getElementById("kecamatan").value) {
+            document.getElementById("kecamatan").value =
+              addr.suburb || addr.village || "";
+          }
+          if (!document.getElementById("kelurahan").value) {
+            document.getElementById("kelurahan").value =
+              addr.quarter || addr.neighbourhood || "";
+          }
+        } catch (err) {
+          report.location = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+        }
 
         reports.unshift(report);
         saveReports();
@@ -39,9 +63,13 @@ function addReport() {
         updateStatus();
         alert("Laporan berhasil ditambahkan!");
       },
-
       (err) => {
         console.warn("Gagal ambil lokasi", err.message);
+      },
+      {
+        timeout: 10000,
+        maximumAge: 60000,
+        enableHighAccuracy: false,
       },
     );
   } else {
